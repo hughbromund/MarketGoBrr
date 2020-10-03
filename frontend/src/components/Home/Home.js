@@ -92,14 +92,15 @@ export default class Home extends Component {
                   <b>@{this.state.twitterUsername}</b> Tweets
                 </Card.Title>
                 <Card.Text></Card.Text>
-                <Button variant="success" size="lg">
-                  <Link
-                    to="/analysis"
-                    style={{ color: "inherit", "text-decoration": "none" }}
-                  >
+                <Link
+                  as={Button}
+                  to="/analysis"
+                  style={{ color: "inherit", "text-decoration": "none" }}
+                >
+                  <Button variant="success" size="lg">
                     Go!
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </Card.Body>
             </Card>
           </div>
