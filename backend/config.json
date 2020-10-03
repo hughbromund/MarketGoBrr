@@ -1,4 +1,5 @@
 {
-    "project-region": "UNKNOWN",
-    "project-id": "market-go-brr-1601692673237"
+    "project_region": "us-east4",
+    "project_id": "market-go-brr-1601692673237",
+    "project_function" : "post_analysis"
 }
