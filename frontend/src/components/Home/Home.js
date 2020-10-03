@@ -44,7 +44,7 @@ export default class Home extends Component {
             </h1>
             <p className={classes.center}>
               Market Go Brr lets you enter a Twitter handle and see how that
-              users tweets impact a stock of your choice
+              users' tweets impact a stock of your choice.
             </p>
           </Col>
         </Row>
