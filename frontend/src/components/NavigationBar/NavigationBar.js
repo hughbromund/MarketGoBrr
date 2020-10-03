@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import classes from "./NavigationBar.module.css";
 
 export default class NavigationBar extends Component {
   render() {
     return (
       <div>
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" className={classes.NavigationBar}>
           <Navbar.Brand>
             <Link
               to="/"
