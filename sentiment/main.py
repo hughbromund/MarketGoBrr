@@ -29,9 +29,13 @@ def get_sentiment_data(twitter_handle, stock_ticker):
     # Get list of tweets with name, id, score, magnitude, text
     tweet_list = sentiment_analysis.get_tweet_list(user_handle=twitter_handle)
 
+    if tweet_list[0] == "34":
+        return {"status": 400, "message": "Invalid twitter handle"}
+
     tweet_time_list = []
     tweet_score_list = []
-    mag_list = []
+    mag_id_list = []
+    mag_date_list = []
 
     curr_time = None
     curr_score = 0
@@ -56,7 +60,9 @@ def get_sentiment_data(twitter_handle, stock_ticker):
             # Average score and add to array
             tweet_score_list.append(curr_score / curr_count)
             tweet_time_list.append(int(curr_time.timestamp()))
-            mag_list.append(tweet_list[max_mag_ind].get("id"))
+            mag_id_list.append(tweet_list[max_mag_ind].get("id"))
+            mag_date_list.append(
+                int(tweet_list[max_mag_ind].get("date").timestamp()))
 
             curr_time = tweet_list[i].get("date")
             curr_count = 1
@@ -72,7 +78,9 @@ def get_sentiment_data(twitter_handle, stock_ticker):
 
     tweet_score_list.append(curr_score / curr_count)
     tweet_time_list.append(int(curr_time.timestamp()))
-    mag_list.append(tweet_list[max_mag_ind].get("id"))
+    mag_id_list.append(tweet_list[max_mag_ind].get("id"))
+    mag_date_list.append(
+        int(tweet_list[max_mag_ind].get("date").timestamp()))
 
     # tweet_time_list.append(int(tweet.get("date").timestamp()))
     # tweet_score_list.append(tweet.get("score"))
@@ -96,7 +104,8 @@ def get_sentiment_data(twitter_handle, stock_ticker):
             aggregate_list.append({
                 "score": tweet_score_list[i],
                 "change": data_arr[i][0],
-                "id": mag_list[i]
+                "id": mag_id_list[i],
+                "timestamp": mag_date_list[i]
             })
 
     # print(tweet_time_list)
@@ -144,4 +153,4 @@ def post_analysis(request):
 
 if __name__ == "__main__":
     # get_sentiment_data("realDonaldTrump", "aapl")
-    get_sentiment_data("Trump2Cash", "spy")
+    print(get_sentiment_data("BarackObama", "spy"))

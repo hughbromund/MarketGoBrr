@@ -17,7 +17,10 @@ def get_tweets(handle):
 
     api = tweepy.API(auth)
 
-    timeline = api.user_timeline(id=handle, count=100)
+    try:
+        timeline = api.user_timeline(id=handle, count=100)
+    except:
+        return ["34"]
 
     tweet_list = []
     for obj in timeline:
