@@ -38,7 +38,7 @@ export default class Analysis extends Component {
           <Container fluid>
             <Row>
               <Col>
-                <Fade bottom>
+                <Fade bottom delay={500}>
                   <Card className={classes.StockCard}>
                     <Card.Body>
                       <Card.Title>
@@ -54,7 +54,7 @@ export default class Analysis extends Component {
                   </Card>
                 </Fade>
                 <br />
-                <Fade bottom>
+                <Fade bottom delay={500}>
                   <div className={classes.center}>
                     <OverlayTrigger
                       placement="top"
