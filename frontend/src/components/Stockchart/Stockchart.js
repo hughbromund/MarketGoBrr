@@ -26,7 +26,7 @@ class Stockchart extends React.Component {
       <ChartCanvas
         ratio={ratio}
         width={width}
-        height={400}
+        height={500}
         margin={{ left: 50, right: 50, top: 10, bottom: 30 }}
         seriesName="MSFT"
         data={data}

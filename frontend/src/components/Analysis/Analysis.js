@@ -21,10 +21,12 @@ export default class Analysis extends Component {
             <Row>
               <Col>
                 <h1>
-                  We have determined that his user's tweets have a 50% effect on
-                  SPY.
+                  We have determined that this user's tweets have a 50% effect
+                  on SPY.
                 </h1>
                 <StockchartInterface></StockchartInterface>
+                <br />
+                <br />
                 <div className={classes.center}>
                   <Link
                     activeClass="active"
@@ -48,7 +50,38 @@ export default class Analysis extends Component {
           <Element name="test1" className="element">
             <Container fluid>
               <Row>
-                <Col>Test1</Col>
+                <Col sm={8}>
+                  <h1>Top Sentiments</h1>
+                  <Row>
+                    <Col>
+                      <h1>33% angry</h1>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <h1>50% sad</h1>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <h1>1% happy</h1>
+                    </Col>
+                  </Row>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+
+                  <Row>
+                    <Col>
+                      <h1>Top Tweets:</h1>
+                    </Col>
+                  </Row>
+                </Col>
+                <Col sm={4}>
+                  <h1>Twitter Feed</h1>
+                </Col>
               </Row>
             </Container>
           </Element>

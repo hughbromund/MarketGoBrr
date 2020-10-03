@@ -20,6 +20,7 @@ ReactDOM.render(
   <div>
     <Router>
       <NavigationBar />
+      <br />
       <div style={{ minHeight: "100vh" }}>
         <div>
           <Route path="/about" component={About} />
