@@ -18,10 +18,17 @@ import classes from "./Analysis.module.css";
 
 export default class Analysis extends Component {
   getUsername = () => {
-    return this.props.location.pathname.split("/")[2];
+    console.log(this.props.location.pathname.split("/")[2]);
+    return this.props.location.pathname.split("/")[2] === "" ||
+      this.props.location.pathname.split("/")[2] === undefined
+      ? "realDonaldTrump"
+      : this.props.location.pathname.split("/")[2];
   };
   getStockTicker = () => {
-    return this.props.location.pathname.split("/")[3];
+    return this.props.location.pathname.split("/")[3] === "" ||
+      this.props.location.pathname.split("/")[3] === undefined
+      ? "AAPL"
+      : this.props.location.pathname.split("/")[3];
   };
   render() {
     return (
