@@ -148,7 +148,7 @@ export default class Analysis extends Component {
               <Row>
                 <Col sm={8}>
                   <Fade bottom>
-                    <h2>Top Sentiments:</h2>
+                    <h2>Top Sentiments</h2>
                   </Fade>
                   <Row>
                     <Col>
@@ -181,7 +181,7 @@ export default class Analysis extends Component {
                   </Row>
                   <br />
                   <Fade bottom delay={1000}>
-                    <h2>Top Tweets:</h2>
+                    <h2>Top Tweets</h2>
                   </Fade>
 
                   <Row>
@@ -213,7 +213,7 @@ export default class Analysis extends Component {
                 </Col>
                 <Col sm={4}>
                   <Fade bottom>
-                    <h1>Twitter Feed</h1>
+                    <h2>Twitter Feed</h2>
                   </Fade>
                   <Fade bottom>
                     <Timeline
