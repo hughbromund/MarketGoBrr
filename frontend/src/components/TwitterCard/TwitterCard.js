@@ -6,7 +6,12 @@ import classes from "./TwitterCard.module.css";
 export default class TwitterCard extends Component {
   render() {
     return (
-      <Card className={classes.TwitterCard}>
+      <Card
+        className={classes.TwitterCard}
+        onClick={(e) => {
+          this.props.setTwitterUsername(this.props.handle);
+        }}
+      >
         <Card.Body>
           <Card.Title>
             <b>{this.props.name}</b>
