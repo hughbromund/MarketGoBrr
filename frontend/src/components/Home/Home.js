@@ -9,8 +9,8 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import classes from "./Home.module.css";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 import TwitterCard from "../TwitterCard/TwitterCard";
+import StockCard from "../StockCard/StockCard";
 import CardDeck from "react-bootstrap/CardDeck";
 
 export default class Home extends Component {
@@ -26,18 +26,24 @@ export default class Home extends Component {
     this.setState({ twitterUsername: newUsername });
   };
 
+  setStockTicker = (newTicker) => {
+    this.setState({ stockTicker: newTicker });
+  };
+
   render() {
     console.log(this.state);
     return (
       <Container>
         <Row>
           <Col>
-            <h1 className={classes.center}>Market Go Brr</h1>
+            <h1 className={classes.center}>
+              <b>Market Go Brr</b>
+            </h1>
           </Col>
         </Row>
         <Row>
           <Col>
-            <InputGroup>
+            <InputGroup className={classes.inputGroup}>
               <InputGroup.Prepend>
                 <InputGroup.Text>@</InputGroup.Text>
               </InputGroup.Prepend>
@@ -52,7 +58,7 @@ export default class Home extends Component {
             </InputGroup>
           </Col>
           <Col>
-            <InputGroup>
+            <InputGroup className={classes.inputGroup}>
               <FormControl
                 value={this.state.stockTicker}
                 onChange={(e) => {
@@ -104,15 +110,44 @@ export default class Home extends Component {
             </div>
           </Col>
           <Col>
-            <div className={classes.center}>
-              <b>Popular Stocks</b>
+            <div>
+              <h3>Popular Stocks</h3>
             </div>
-            <div className={classes.center}>
-              <ButtonGroup>
-                <Button>Button 1</Button>
-                <Button>Button 2</Button>
-                <Button>Button 3</Button>
-              </ButtonGroup>
+            <br />
+            <div>
+              <CardDeck>
+                <StockCard
+                  name="Apple Inc."
+                  ticker="AAPL"
+                  link="https://www.google.com/finance/quote/AAPL:NASDAQ"
+                  description="Apple Inc is the largest company by Market Capitalization on the planet. They are worth over $2 Trillion."
+                  setStockTicker={this.setStockTicker}
+                />
+                <StockCard
+                  name="SPDR S&P 500 ETF Trust"
+                  ticker="SPY"
+                  link="https://www.google.com/finance/quote/SPY:NYSEARCA"
+                  description="SPY is an aggregate of the S&P 500 largest companies. It is a good measure for the market as a whole."
+                  setStockTicker={this.setStockTicker}
+                />
+              </CardDeck>
+              <br />
+              <CardDeck>
+                <StockCard
+                  name="Tesla Inc"
+                  ticker="TSLA"
+                  link="https://www.google.com/finance/quote/TSLA:NASDAQ"
+                  description="Tesla Inc is the fastest growing car company. They are lead by Elon Musk. His Twitter account often impacts their price dramatically."
+                  setStockTicker={this.setStockTicker}
+                />
+                <StockCard
+                  name="Exxon Mobil Corporation"
+                  ticker="XOM"
+                  link="https://www.google.com/finance/quote/XOM:NYSE"
+                  description="The Exxon Mobil Corporation is the largest Oil and Natural Gas company in the United States. Their stock price is often more stable than other tech stocks."
+                  setStockTicker={this.setStockTicker}
+                />
+              </CardDeck>
             </div>
           </Col>
         </Row>
