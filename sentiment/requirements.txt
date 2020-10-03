@@ -1,0 +1,5 @@
+finnhub-python
+tweepy
+scipy
+matplotlib.pyplot
+numpy
