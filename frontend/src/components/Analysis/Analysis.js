@@ -79,7 +79,7 @@ export default class Analysis extends Component {
             <Container fluid>
               <Row>
                 <Col sm={8}>
-                  <h2>Top Sentiments</h2>
+                  <h2>Top Sentiments:</h2>
                   <Row>
                     <Col>
                       <CardDeck>
