@@ -17,8 +17,8 @@ if (window.location.protocol !== "https:") {
 
 ReactDOM.render(
   <div>
-    <NavigationBar />
     <Router>
+      <NavigationBar />
       <div>
         <Route path="/about" component={About} />
         <Route path="/analysis" component={Analysis} />
