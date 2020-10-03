@@ -42,10 +42,37 @@ export default class Analysis extends Component {
     var body = await response.json();
     this.setState({ data: body });
     console.log(body);
+    console.log(Math.abs(this.state.data.r_value).toString());
   }
   componentDidMount() {
     this.getData();
   }
+
+  determinePositiveOrNegative = (num) => {
+    if (num >= 0) {
+      return "positive";
+    } else {
+      return "negative";
+    }
+  };
+
+  determineCorrelation = () => {
+    var out = "";
+    var percent = Math.abs(this.state.data.r_value * 100);
+    if (percent >= 30) {
+      out += "a strong ";
+      out += this.determinePositiveOrNegative();
+    } else if (percent >= 20) {
+      out += "a medium ";
+      out += this.determinePositiveOrNegative();
+    } else if (out >= 10) {
+      out += "a low ";
+      out += this.determinePositiveOrNegative();
+    } else {
+      out += "no";
+    }
+    return out;
+  };
   getUsername = () => {
     return this.props.location.pathname.split("/")[2] === "" ||
       this.props.location.pathname.split("/")[2] === undefined
@@ -73,7 +100,8 @@ export default class Analysis extends Component {
                     <Card.Body>
                       <Card.Title>
                         We have determined that <b>@{this.getUsername()}'s</b>{" "}
-                        tweets have a 50% effect on{" "}
+                        tweets have{" "}
+                        <b>{this.determineCorrelation()} correlation</b> with{" "}
                         <b>{this.getStockTicker()}</b>.
                       </Card.Title>
                       <hr />
@@ -193,7 +221,7 @@ export default class Analysis extends Component {
                     <Timeline
                       dataSource={{
                         sourceType: "profile",
-                        screenName: "TwitterDev",
+                        screenName: this.getUsername(),
                       }}
                       options={{
                         height: "800",
