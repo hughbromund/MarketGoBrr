@@ -56,7 +56,7 @@ def get_sentiment_data(twitter_handle, stock_ticker):
             # Average score and add to array
             tweet_score_list.append(curr_score / curr_count)
             tweet_time_list.append(int(curr_time.timestamp()))
-            mag_list.append(max_mag_ind)
+            mag_list.append(tweet_list[max_mag_ind].get("id"))
 
             curr_time = tweet_list[i].get("date")
             curr_count = 1
@@ -101,8 +101,8 @@ def get_sentiment_data(twitter_handle, stock_ticker):
     if len(x_arr) != len(y_arr) or len(x_arr) == 0 or len(y_arr) == 0:
         return {"status": 400}
 
-    perform_linear_regression(x_arr=x_arr,
-                              y_arr=y_arr)
+    r = perform_linear_regression(x_arr=x_arr,
+                                  y_arr=y_arr)
 
     # Information to return: stock data, tweet data, R value,
     final_dict = {}
@@ -110,6 +110,7 @@ def get_sentiment_data(twitter_handle, stock_ticker):
     final_dict["stock_data"] = stock_vals.get("stock_data")
     final_dict["tweet_list"] = tweet_list
     final_dict["aggregate_data"] = aggregate_list
+    final_dict["r_value"] = r
 
     # print(final_dict)
 
