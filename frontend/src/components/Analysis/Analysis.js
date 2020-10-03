@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import StockchartInterface from "../Stockchart/StockchartInterface";
 
-import { Link, Element, scroller } from "react-scroll";
+import { Link, Element } from "react-scroll";
 import {
   Container,
   Row,
@@ -17,13 +17,12 @@ import AnalysisCard from "../AnalysisCard/AnalysisCard";
 import classes from "./Analysis.module.css";
 
 export default class Analysis extends Component {
-  scrollTo() {
-    scroller.scrollTo("scroll-to-element", {
-      duration: 800,
-      delay: 0,
-      smooth: "easeInOutQuart",
-    });
-  }
+  getUsername = () => {
+    return this.props.location.pathname.split("/")[2];
+  };
+  getStockTicker = () => {
+    return this.props.location.pathname.split("/")[3];
+  };
   render() {
     return (
       <div>
@@ -34,10 +33,9 @@ export default class Analysis extends Component {
                 <Card className={classes.StockCard}>
                   <Card.Body>
                     <Card.Title>
-                      <b>
-                        We have determined that this user's tweets have a 50%
-                        effect on SPY.
-                      </b>
+                      We have determined that <b>@{this.getUsername()}'s</b>{" "}
+                      tweets have a 50% effect on <b>{this.getStockTicker()}</b>
+                      .
                     </Card.Title>
                     <hr />
                     <Card.Text>
