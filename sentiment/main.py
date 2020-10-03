@@ -80,6 +80,9 @@ def get_sentiment_data(twitter_handle, stock_ticker):
     stock_vals = stock.get_stock_data_and_time_list(
         stock_symbol=stock_ticker, time_list=tweet_time_list)
 
+    if len(stock_vals.get("stock_data")) == 0:
+        return {"status": 400, "message": "Invalid stock ticker"}
+
     aggregate_list = []
 
     x_arr = []
@@ -98,8 +101,8 @@ def get_sentiment_data(twitter_handle, stock_ticker):
 
     # print(tweet_time_list)
 
-    if len(x_arr) != len(y_arr) or len(x_arr) == 0 or len(y_arr) == 0:
-        return {"status": 400}
+    if len(x_arr) != len(y_arr) or len(x_arr) < 10 or len(y_arr) < 10:
+        return {"status": 400, "message": "User does not have enough tweets."}
 
     r = perform_linear_regression(x_arr=x_arr,
                                   y_arr=y_arr)
@@ -139,6 +142,6 @@ def post_analysis(request):
     return get_sentiment_data(twitter_handle=user, stock_ticker=stock)
 
 
-# if __name__ == "__main__":
-#     # get_sentiment_data("realDonaldTrump", "aapl")
-#     get_sentiment_data("BarackObama", "spy")
+if __name__ == "__main__":
+    # get_sentiment_data("realDonaldTrump", "aapl")
+    get_sentiment_data("Trump2Cash", "spy")

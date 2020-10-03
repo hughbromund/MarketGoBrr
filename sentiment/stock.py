@@ -57,13 +57,17 @@ def stock_change(stock_data, time):
 
 
 def get_stock_data_and_time_list(stock_symbol, time_list):
-    dt = datetime.now()
-    dt_year = dt.replace(month=dt.month - 1)
-    stock = stocks(stock_symbol, int(dt_year.timestamp()), int(dt.timestamp()))
 
-    # print(stock)
+    dt = datetime.now()
+    dt_month = dt.replace(month=dt.month - 1)
+    stock = stocks(stock_symbol, int(
+        dt_month.timestamp()), int(dt.timestamp()))
+
+    if stock["s"] == "no_data":
+        return {"stock_data": []}
 
     change_list = []
+
     for time in time_list:
         change_list.append(stock_change(stock_data=stock, time=time))
 
