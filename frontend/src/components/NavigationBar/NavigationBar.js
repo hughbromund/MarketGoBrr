@@ -42,14 +42,14 @@ export default class NavigationBar extends Component {
                 </Link>
               </Nav.Link>
             </Nav>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/hughbromund/MarketGoBrr"
+            >
+              <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+            </a>
           </Navbar.Collapse>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/hughbromund/MarketGoBrr"
-          >
-            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-          </a>
         </Navbar>
       </div>
     );
