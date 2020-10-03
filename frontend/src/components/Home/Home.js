@@ -12,6 +12,8 @@ import classes from "./Home.module.css";
 import TwitterCard from "../TwitterCard/TwitterCard";
 import StockCard from "../StockCard/StockCard";
 import CardDeck from "react-bootstrap/CardDeck";
+import Collapse from "react-bootstrap/Collapse";
+import Card from "react-bootstrap/Card";
 
 // making a slight change
 export default class Home extends Component {
@@ -40,8 +42,13 @@ export default class Home extends Component {
             <h1 className={classes.center}>
               <b>Market Go Brr</b>
             </h1>
+            <p className={classes.center}>
+              Market Go Brr lets you enter a Twitter handle and see how that
+              users tweets impact a stock of your choice
+            </p>
           </Col>
         </Row>
+        <br />
         <Row>
           <Col>
             <InputGroup className={classes.inputGroup}>
@@ -71,6 +78,32 @@ export default class Home extends Component {
             </InputGroup>
           </Col>
         </Row>
+        <Collapse
+          in={
+            this.state.stockTicker !== "" && this.state.twitterUsername !== ""
+          }
+        >
+          <div className={classes.center}>
+            <br />
+            <Card border="success" className={classes.resultsCard}>
+              <Card.Body>
+                <Card.Title>
+                  Lets see how brr <b>{this.state.stockTicker}</b> goes when{" "}
+                  <b>@{this.state.twitterUsername}</b> Tweets
+                </Card.Title>
+                <Card.Text></Card.Text>
+                <Button variant="success" size="lg">
+                  <Link
+                    to="/analysis"
+                    style={{ color: "inherit", "text-decoration": "none" }}
+                  >
+                    Go!
+                  </Link>
+                </Button>
+              </Card.Body>
+            </Card>
+          </div>
+        </Collapse>
         <br />
         <Row>
           <Col>
@@ -149,20 +182,6 @@ export default class Home extends Component {
                   setStockTicker={this.setStockTicker}
                 />
               </CardDeck>
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <div className={classes.center}>
-              <Button variant="success" size="lg">
-                <Link
-                  to="/analysis"
-                  style={{ color: "inherit", "text-decoration": "none" }}
-                >
-                  Go!
-                </Link>
-              </Button>
             </div>
           </Col>
         </Row>
