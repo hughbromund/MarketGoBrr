@@ -14,6 +14,7 @@ import StockCard from "../StockCard/StockCard";
 import CardDeck from "react-bootstrap/CardDeck";
 import Collapse from "react-bootstrap/Collapse";
 import Card from "react-bootstrap/Card";
+import Image from "react-bootstrap/Image";
 
 // making a slight change
 export default class Home extends Component {
@@ -37,7 +38,12 @@ export default class Home extends Component {
     return (
       <Container>
         <Row>
-          <Col>
+          <Col className={classes.center}>
+            <Image
+              alt=""
+              src={require("../../assets/MarketGoBrrLogo.png")}
+              className={classes.logo}
+            />
             <h1 className={classes.center}>
               <b>Market Go Brr</b>
             </h1>
@@ -94,7 +100,7 @@ export default class Home extends Component {
                 <Link
                   as={Button}
                   to={`/analysis/${this.state.twitterUsername}/${this.state.stockTicker}`}
-                    style={{ color: "inherit", "text-decoration": "none" }}
+                  style={{ color: "inherit", "text-decoration": "none" }}
                 >
                   <Button variant="success" size="lg">
                     Go!
