@@ -35,8 +35,6 @@ export default class Analysis extends Component {
       BASE + "/api/" + this.getUsername() + "/" + this.getStockTicker(),
       {
         method: "GET",
-        credentials: "include",
-        withCredentials: true,
       }
     );
     var body = await response.json();
