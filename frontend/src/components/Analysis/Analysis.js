@@ -2,7 +2,15 @@ import React, { Component } from "react";
 import StockchartInterface from "../Stockchart/StockchartInterface";
 
 import { Link, Element, scroller } from "react-scroll";
-import { Container, Row, Col, CardDeck } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  CardDeck,
+  Card,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 import { Timeline, Tweet } from "react-twitter-widgets";
 import AnalysisCard from "../AnalysisCard/AnalysisCard";
 
@@ -23,29 +31,42 @@ export default class Analysis extends Component {
           <Container fluid>
             <Row>
               <Col>
-                <h1>
-                  We have determined that this user's tweets have a 50% effect
-                  on SPY.
-                </h1>
-                <StockchartInterface></StockchartInterface>
+                <Card className={classes.StockCard}>
+                  <Card.Body>
+                    <Card.Title>
+                      <b>
+                        We have determined that this user's tweets have a 50%
+                        effect on SPY.
+                      </b>
+                    </Card.Title>
+                    <hr />
+                    <Card.Text>
+                      <StockchartInterface />
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
                 <br />
                 <div className={classes.center}>
-                  <label>More info:</label>
-                </div>
-                <div className={classes.center}>
-                  <Link
-                    activeClass="active"
-                    className="test1"
-                    to="test1"
-                    spy={true}
-                    smooth={true}
-                    duration={1000}
+                  <OverlayTrigger
+                    placement="top"
+                    overlay={<Tooltip id="tooltip">More info.</Tooltip>}
                   >
-                    <i
-                      class="fa fa-arrow-circle-down fa-5x"
-                      aria-hidden="true"
-                    ></i>
-                  </Link>
+                    <div className={classes.tooltip}>
+                      <Link
+                        activeClass="active"
+                        className="test1"
+                        to="test1"
+                        spy={true}
+                        smooth={true}
+                        duration={1000}
+                      >
+                        <i
+                          class="fa fa-arrow-circle-down fa-5x"
+                          aria-hidden="true"
+                        ></i>
+                      </Link>
+                    </div>
+                  </OverlayTrigger>
                 </div>
               </Col>
             </Row>
@@ -84,6 +105,7 @@ export default class Analysis extends Component {
                       </CardDeck>
                     </Col>
                   </Row>
+                  <br />
 
                   <h2>Top Tweets:</h2>
 
