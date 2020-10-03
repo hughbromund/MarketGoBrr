@@ -3,6 +3,8 @@ import StockchartInterface from "../Stockchart/StockchartInterface";
 
 import { Link, Element, scroller } from "react-scroll";
 import { Container, Row, Col } from "react-bootstrap";
+import { Timeline } from "react-twitter-widgets";
+
 import classes from "./Analysis.module.css";
 
 export default class Analysis extends Component {
@@ -26,7 +28,9 @@ export default class Analysis extends Component {
                 </h1>
                 <StockchartInterface></StockchartInterface>
                 <br />
-                <br />
+                <div className={classes.center}>
+                  <label>More info:</label>
+                </div>
                 <div className={classes.center}>
                   <Link
                     activeClass="active"
@@ -46,6 +50,7 @@ export default class Analysis extends Component {
             </Row>
           </Container>
         </div>
+        <hr />
         <div className={classes.firstContainer}>
           <Element name="test1" className="element">
             <Container fluid>
@@ -81,6 +86,15 @@ export default class Analysis extends Component {
                 </Col>
                 <Col sm={4}>
                   <h1>Twitter Feed</h1>
+                  <Timeline
+                    dataSource={{
+                      sourceType: "profile",
+                      screenName: "TwitterDev",
+                    }}
+                    options={{
+                      height: "800",
+                    }}
+                  />
                 </Col>
               </Row>
             </Container>
