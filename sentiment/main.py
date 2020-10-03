@@ -98,6 +98,9 @@ def get_sentiment_data(twitter_handle, stock_ticker):
 
     # print(tweet_time_list)
 
+    if len(x_arr) != len(y_arr) or len(x_arr) == 0 or len(y_arr) == 0:
+        return {"status": 400}
+
     perform_linear_regression(x_arr=x_arr,
                               y_arr=y_arr)
 
