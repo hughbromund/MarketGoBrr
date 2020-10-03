@@ -13,6 +13,7 @@ import {
 } from "react-bootstrap";
 import { Timeline, Tweet } from "react-twitter-widgets";
 import AnalysisCard from "../AnalysisCard/AnalysisCard";
+import Fade from "react-reveal/Fade";
 
 import classes from "./Analysis.module.css";
 
@@ -37,42 +38,46 @@ export default class Analysis extends Component {
           <Container fluid>
             <Row>
               <Col>
-                <Card className={classes.StockCard}>
-                  <Card.Body>
-                    <Card.Title>
-                      We have determined that <b>@{this.getUsername()}'s</b>{" "}
-                      tweets have a 50% effect on <b>{this.getStockTicker()}</b>
-                      .
-                    </Card.Title>
-                    <hr />
-                    <Card.Text>
-                      <StockchartInterface />
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
+                <Fade bottom>
+                  <Card className={classes.StockCard}>
+                    <Card.Body>
+                      <Card.Title>
+                        We have determined that <b>@{this.getUsername()}'s</b>{" "}
+                        tweets have a 50% effect on{" "}
+                        <b>{this.getStockTicker()}</b>.
+                      </Card.Title>
+                      <hr />
+                      <Card.Text>
+                        <StockchartInterface />
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Fade>
                 <br />
-                <div className={classes.center}>
-                  <OverlayTrigger
-                    placement="top"
-                    overlay={<Tooltip id="tooltip">More info.</Tooltip>}
-                  >
-                    <div className={classes.tooltip}>
-                      <Link
-                        activeClass="active"
-                        className="test1"
-                        to="test1"
-                        spy={true}
-                        smooth={true}
-                        duration={1000}
-                      >
-                        <i
-                          class="fa fa-arrow-circle-down fa-5x"
-                          aria-hidden="true"
-                        ></i>
-                      </Link>
-                    </div>
-                  </OverlayTrigger>
-                </div>
+                <Fade bottom>
+                  <div className={classes.center}>
+                    <OverlayTrigger
+                      placement="top"
+                      overlay={<Tooltip id="tooltip">More info.</Tooltip>}
+                    >
+                      <div className={classes.tooltip}>
+                        <Link
+                          activeClass="active"
+                          className="test1"
+                          to="test1"
+                          spy={true}
+                          smooth={true}
+                          duration={1000}
+                        >
+                          <i
+                            class="fa fa-arrow-circle-down fa-5x"
+                            aria-hidden="true"
+                          ></i>
+                        </Link>
+                      </div>
+                    </OverlayTrigger>
+                  </div>
+                </Fade>
               </Col>
             </Row>
           </Container>
@@ -84,68 +89,85 @@ export default class Analysis extends Component {
             <Container fluid>
               <Row>
                 <Col sm={8}>
-                  <h2>Top Sentiments:</h2>
+                  <Fade bottom>
+                    <h2>Top Sentiments:</h2>
+                  </Fade>
                   <Row>
                     <Col>
-                      <CardDeck>
-                        <AnalysisCard
-                          name="Angry Sentiment"
-                          description="This user has a 33% angry sentiment, which has a high effect of the market."
-                        />
-                        <AnalysisCard
-                          name="Sad Sentiment"
-                          description="This user has a 8% angry sentiment, which has a high effect of the market."
-                        />
-                      </CardDeck>
+                      <Fade bottom>
+                        <CardDeck>
+                          <AnalysisCard
+                            name="Angry Sentiment"
+                            description="This user has a 33% angry sentiment, which has a high effect of the market."
+                          />
+                          <AnalysisCard
+                            name="Sad Sentiment"
+                            description="This user has a 8% angry sentiment, which has a high effect of the market."
+                          />
+                        </CardDeck>
+                      </Fade>
                       <br />
-                      <CardDeck>
-                        <AnalysisCard
-                          name="Happy Sentiment"
-                          description="This user has a 50% angry sentiment, which has a high effect of the market."
-                        />
-                        <AnalysisCard
-                          name="Annoyed Sentiment"
-                          description="This user has a 10% angry sentiment, which has a high effect of the market."
-                        />
-                      </CardDeck>
+                      <Fade bottom>
+                        <CardDeck>
+                          <AnalysisCard
+                            name="Happy Sentiment"
+                            description="This user has a 50% angry sentiment, which has a high effect of the market."
+                          />
+                          <AnalysisCard
+                            name="Annoyed Sentiment"
+                            description="This user has a 10% angry sentiment, which has a high effect of the market."
+                          />
+                        </CardDeck>
+                      </Fade>
                     </Col>
                   </Row>
                   <br />
-
-                  <h2>Top Tweets:</h2>
+                  <Fade bottom delay={1000}>
+                    <h2>Top Tweets:</h2>
+                  </Fade>
 
                   <Row>
                     <Col>
-                      <Tweet
-                        tweetId="841418541026877441"
-                        options={{ width: "200" }}
-                      />
+                      <Fade bottom delay={1000}>
+                        <Tweet
+                          tweetId="841418541026877441"
+                          options={{ width: "200" }}
+                        />
+                      </Fade>
                     </Col>
                     <Col>
-                      <Tweet
-                        tweetId="841418541026877441"
-                        options={{ width: "200" }}
-                      />
+                      <Fade bottom delay={1000}>
+                        <Tweet
+                          tweetId="841418541026877441"
+                          options={{ width: "200" }}
+                        />
+                      </Fade>
                     </Col>
                     <Col>
-                      <Tweet
-                        tweetId="841418541026877441"
-                        options={{ width: "200" }}
-                      />
+                      <Fade bottom delay={1000}>
+                        <Tweet
+                          tweetId="841418541026877441"
+                          options={{ width: "200" }}
+                        />
+                      </Fade>
                     </Col>
                   </Row>
                 </Col>
                 <Col sm={4}>
-                  <h1>Twitter Feed</h1>
-                  <Timeline
-                    dataSource={{
-                      sourceType: "profile",
-                      screenName: "TwitterDev",
-                    }}
-                    options={{
-                      height: "800",
-                    }}
-                  />
+                  <Fade bottom>
+                    <h1>Twitter Feed</h1>
+                  </Fade>
+                  <Fade bottom>
+                    <Timeline
+                      dataSource={{
+                        sourceType: "profile",
+                        screenName: "TwitterDev",
+                      }}
+                      options={{
+                        height: "800",
+                      }}
+                    />
+                  </Fade>
                 </Col>
               </Row>
             </Container>
