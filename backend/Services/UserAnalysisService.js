@@ -15,15 +15,18 @@ exports.userAnalysisStub = async function (req) {
 
 
 exports.userAnalysis = async function (req) {
-    const {result} = await got.post('https://' + config.project-region + '-' + config.project-id + '.cloudfunctions.net/post_analysis',
+    const result = await got.post('https://' + config.project_region + '-' + config.project_id + '.cloudfunctions.net/' + config.project_function,
     {
         json: {
             user: req.params.user,
             stock: req.params.stock
         },
-        responseType: 'json'
+        responseType: 'json',
+        resolveBodyOnly: true
     })
+    //console.log(result)
+    result.status = 200
 
-    return (result, 200)
+    return result;
     
 }
