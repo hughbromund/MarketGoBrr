@@ -23,8 +23,30 @@ if (process.env.NODE_ENV === "development") {
 }
 
 export default class Analysis extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: "",
+    };
+  }
+  async getData() {
+    console.log("here");
+    var response = await fetch(
+      BASE + "/api/" + this.getUsername() + "/" + this.getStockTicker(),
+      {
+        method: "GET",
+        credentials: "include",
+        withCredentials: true,
+      }
+    );
+    var body = await response.json();
+    this.setState({ data: body });
+    console.log(body);
+  }
+  componentDidMount() {
+    this.getData();
+  }
   getUsername = () => {
-    console.log(this.props.location.pathname.split("/")[2]);
     return this.props.location.pathname.split("/")[2] === "" ||
       this.props.location.pathname.split("/")[2] === undefined
       ? "realDonaldTrump"
@@ -37,7 +59,9 @@ export default class Analysis extends Component {
       : this.props.location.pathname.split("/")[3];
   };
   render() {
-    console.log(BASE);
+    if (this.state.data === "") {
+      return "Loading...";
+    }
     return (
       <div>
         <div className={classes.firstContainer}>
@@ -54,7 +78,9 @@ export default class Analysis extends Component {
                       </Card.Title>
                       <hr />
                       <Card.Text>
-                        <StockchartInterface />
+                        <StockchartInterface
+                          rawData={this.state.data.stock_data}
+                        />
                       </Card.Text>
                     </Card.Body>
                   </Card>
