@@ -9,48 +9,65 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import classes from "./Home.module.css";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 export default class Home extends Component {
   render() {
     return (
       <Container>
         <Row>
-          <Col></Col>
           <Col>
             <h1 className={classes.center}>Market Go Brr</h1>
           </Col>
-          <Col></Col>
         </Row>
         <Row>
           <Col>
             <InputGroup>
-              <FormControl aria-describedby="basic-addon1" />
+              <InputGroup.Prepend>
+                <InputGroup.Text>@</InputGroup.Text>
+              </InputGroup.Prepend>
+              <FormControl
+                placeholder="Twitter Username"
+                aria-label="Twitter Username"
+              />
             </InputGroup>
           </Col>
           <Col>
             <InputGroup>
-              <FormControl aria-describedby="basic-addon1" />
+              <FormControl
+                placeholder="Stock Ticker"
+                aria-label="Stock Ticker"
+              />
             </InputGroup>
           </Col>
         </Row>
         <Row>
           <Col>
             <div className={classes.center}>
-              <Button>Button 1</Button>
-              <Button>Button 2</Button>
-              <Button>Button 3</Button>
+              <b>Popular Twitter Users</b>
+            </div>
+            <div className={classes.center}>
+              <ButtonGroup>
+                <Button>Button 1</Button>
+                <Button>Button 2</Button>
+                <Button>Button 3</Button>
+              </ButtonGroup>
             </div>
           </Col>
           <Col>
             <div className={classes.center}>
-              <Button>Button 1</Button>
-              <Button>Button 2</Button>
-              <Button>Button 3</Button>
+              <b>Popular Stocks</b>
+            </div>
+            <div className={classes.center}>
+              <ButtonGroup>
+                <Button>Button 1</Button>
+                <Button>Button 2</Button>
+                <Button>Button 3</Button>
+              </ButtonGroup>
             </div>
           </Col>
         </Row>
         <Row>
-          <Col></Col>
           <Col>
             <div className={classes.center}>
               <Button variant="success" size="lg">
@@ -63,7 +80,6 @@ export default class Home extends Component {
               </Button>
             </div>
           </Col>
-          <Col></Col>
         </Row>
       </Container>
     );
