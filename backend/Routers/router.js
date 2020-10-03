@@ -7,6 +7,6 @@ const analysisController = require(path.resolve(
     "../Controllers/AnalysisController"
 ))
 
-router.get("/api/:user", analysisController.getUserAnalysis);
+router.get("/api/:user/:stock", analysisController.getUserAnalysis);
 
 module.exports = router;
