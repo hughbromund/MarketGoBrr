@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import StockchartInterface from "../Stockchart/StockchartInterface";
 
 import { Link, Element, scroller } from "react-scroll";
-import { Container, Row, Col } from "react-bootstrap";
-import { Timeline } from "react-twitter-widgets";
+import { Container, Row, Col, CardDeck } from "react-bootstrap";
+import { Timeline, Tweet } from "react-twitter-widgets";
+import AnalysisCard from "../AnalysisCard/AnalysisCard";
 
 import classes from "./Analysis.module.css";
 
@@ -50,37 +51,60 @@ export default class Analysis extends Component {
             </Row>
           </Container>
         </div>
-        <hr />
         <div className={classes.firstContainer}>
           <Element name="test1" className="element">
+            <hr />
+            <br />
             <Container fluid>
               <Row>
                 <Col sm={8}>
-                  <h1>Top Sentiments</h1>
+                  <h2>Top Sentiments</h2>
                   <Row>
                     <Col>
-                      <h1>33% angry</h1>
+                      <CardDeck>
+                        <AnalysisCard
+                          name="Angry Sentiment"
+                          description="This user has a 33% angry sentiment, which has a high effect of the market."
+                        />
+                        <AnalysisCard
+                          name="Sad Sentiment"
+                          description="This user has a 8% angry sentiment, which has a high effect of the market."
+                        />
+                      </CardDeck>
+                      <br />
+                      <CardDeck>
+                        <AnalysisCard
+                          name="Happy Sentiment"
+                          description="This user has a 50% angry sentiment, which has a high effect of the market."
+                        />
+                        <AnalysisCard
+                          name="Annoyed Sentiment"
+                          description="This user has a 10% angry sentiment, which has a high effect of the market."
+                        />
+                      </CardDeck>
                     </Col>
                   </Row>
-                  <Row>
-                    <Col>
-                      <h1>50% sad</h1>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <h1>1% happy</h1>
-                    </Col>
-                  </Row>
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
+
+                  <h2>Top Tweets:</h2>
 
                   <Row>
                     <Col>
-                      <h1>Top Tweets:</h1>
+                      <Tweet
+                        tweetId="841418541026877441"
+                        options={{ width: "200" }}
+                      />
+                    </Col>
+                    <Col>
+                      <Tweet
+                        tweetId="841418541026877441"
+                        options={{ width: "200" }}
+                      />
+                    </Col>
+                    <Col>
+                      <Tweet
+                        tweetId="841418541026877441"
+                        options={{ width: "200" }}
+                      />
                     </Col>
                   </Row>
                 </Col>

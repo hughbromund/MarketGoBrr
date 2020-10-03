@@ -10,7 +10,7 @@ export default class About extends Component {
             <Col>
               <h1>About this project</h1>
               <p>
-                This project uses Google Cloud NLP, Twitter API, and Finhub API
+                This project uses Google Cloud NLP, Twitter API, and Finnhub API
                 to parse someone's tweet history and their effect on a given
                 stock ticker.
               </p>
