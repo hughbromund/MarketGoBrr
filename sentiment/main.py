@@ -84,6 +84,10 @@ def get_sentiment_data(twitter_handle, stock_ticker):
 
     x_arr = []
     y_arr = []
+
+    if len(x_arr) != len(y_arr) or len(x_arr) == 0 or len(y_arr) == 0:
+        return {"status": 400}
+
     data_arr = stock_vals.get("change_data")
     for i in range(len(tweet_score_list)):
         if data_arr[i][1] == "yes":
@@ -98,8 +102,8 @@ def get_sentiment_data(twitter_handle, stock_ticker):
 
     # print(tweet_time_list)
 
-    perform_linear_regression(x_arr=x_arr,
-                              y_arr=y_arr)
+    r = perform_linear_regression(x_arr=x_arr,
+                                  y_arr=y_arr)
 
     # Information to return: stock data, tweet data, R value,
     final_dict = {}
@@ -107,6 +111,7 @@ def get_sentiment_data(twitter_handle, stock_ticker):
     final_dict["stock_data"] = stock_vals.get("stock_data")
     final_dict["tweet_list"] = tweet_list
     final_dict["aggregate_data"] = aggregate_list
+    final_dict["r_value"] = r
 
     # print(final_dict)
 
