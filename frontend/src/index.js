@@ -13,8 +13,8 @@ import Analysis from "./components/Analysis/Analysis";
 
 ReactDOM.render(
   <div>
-    <NavigationBar />
     <Router>
+      <NavigationBar />
       <div>
         <Route path="/about" component={About} />
         <Route path="/analysis" component={Analysis} />
