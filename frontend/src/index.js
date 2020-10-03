@@ -9,7 +9,11 @@ import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Analysis from "./components/Analysis/Analysis";
 
-// Making a small change for testing and another and the last one
+if (window.location.protocol !== "https:") {
+  window.location.replace(
+    `https:${window.location.href.substring(window.location.protocol.length)}`
+  );
+}
 
 ReactDOM.render(
   <div>
