@@ -10,17 +10,16 @@ export default class NavigationBar extends Component {
       <div>
         <Navbar className={classes.NavigationBar} bg="light" expand="lg">
           <Navbar.Brand>
-            <img
-              alt=""
-              src={require("../../assets/MarketGoBrrLogo.png")}
-              height="40"
-              width="40"
-            />
             <Link
               to="/"
               style={{ color: "inherit", "text-decoration": "none" }}
             >
-              {" "}
+              <img
+                alt=""
+                src={require("../../assets/MarketGoBrrLogo.png")}
+                height="40"
+                width="40"
+              />{" "}
               <b>Market Go Brr</b>
             </Link>
           </Navbar.Brand>

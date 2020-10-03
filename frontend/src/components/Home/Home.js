@@ -10,6 +10,8 @@ import {
 import { Link } from "react-router-dom";
 import classes from "./Home.module.css";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
+import TwitterCard from "../TwitterCard/TwitterCard";
+import CardDeck from "react-bootstrap/CardDeck";
 
 export default class Home extends Component {
   render() {
@@ -41,17 +43,26 @@ export default class Home extends Component {
             </InputGroup>
           </Col>
         </Row>
+        <br />
         <Row>
           <Col>
             <div className={classes.center}>
               <b>Popular Twitter Users</b>
             </div>
             <div className={classes.center}>
-              <ButtonGroup>
-                <Button>Button 1</Button>
-                <Button>Button 2</Button>
-                <Button>Button 3</Button>
-              </ButtonGroup>
+              <br />
+              <CardDeck>
+                <TwitterCard
+                  name="Hugh Bromund"
+                  handle="hughbromund"
+                  description="TEST"
+                />
+                <TwitterCard
+                  name="Donald J. Trump"
+                  handle="realDonaldTrump"
+                  description="TEST"
+                />
+              </CardDeck>
             </div>
           </Col>
           <Col>
