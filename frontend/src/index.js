@@ -8,6 +8,7 @@ import NavigationBar from "./components/NavigationBar/NavigationBar";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Analysis from "./components/Analysis/Analysis";
+import Footer from "./components/Footer/Footer";
 
 if (window.location.protocol !== "https:") {
   window.location.replace(
@@ -18,13 +19,16 @@ if (window.location.protocol !== "https:") {
 ReactDOM.render(
   <div>
     <NavigationBar />
-    <Router>
-      <div>
-        <Route path="/about" component={About} />
-        <Route path="/analysis" component={Analysis} />
-        <Route exact path="/" component={Home} />
-      </div>
-    </Router>
+    <div style={{ minHeight: "100vh" }}>
+      <Router>
+        <div>
+          <Route path="/about" component={About} />
+          <Route path="/analysis" component={Analysis} />
+          <Route exact path="/" component={Home} />
+        </div>
+      </Router>
+    </div>
+    <Footer />
   </div>,
   document.getElementById("root")
 );
