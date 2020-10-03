@@ -34,7 +34,6 @@ export default class Home extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <Container>
         <Row>
@@ -44,7 +43,7 @@ export default class Home extends Component {
             </h1>
             <p className={classes.center}>
               Market Go Brr lets you enter a Twitter handle and see how that
-              users' tweets impact a stock of your choice.
+              user's tweets impact a stock of your choice.
             </p>
           </Col>
         </Row>
@@ -94,7 +93,7 @@ export default class Home extends Component {
                 <Card.Text></Card.Text>
                 <Button variant="success" size="lg">
                   <Link
-                    to="/analysis"
+                    to={`/analysis/${this.state.twitterUsername}/${this.state.stockTicker}`}
                     style={{ color: "inherit", "text-decoration": "none" }}
                   >
                     Go!
