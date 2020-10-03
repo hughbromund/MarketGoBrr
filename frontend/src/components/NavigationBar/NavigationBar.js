@@ -13,7 +13,13 @@ export default class NavigationBar extends Component {
               to="/"
               style={{ color: "inherit", "text-decoration": "none" }}
             >
-              Market Go Brr
+              <img
+                alt=""
+                src={require("../../assets/MarketGoBrrLogo.png")}
+                height="40"
+                width="40"
+              />{" "}
+              <b>Market Go Brr</b>
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
