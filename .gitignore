@@ -1,4 +1,5 @@
 backend/node_modules/*
 Market Go Brr-8a03939aab93.json
 sentiment/config.py
+sentiment/config.pyc
 .DS_Store
