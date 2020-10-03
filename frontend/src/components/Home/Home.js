@@ -13,6 +13,7 @@ import TwitterCard from "../TwitterCard/TwitterCard";
 import StockCard from "../StockCard/StockCard";
 import CardDeck from "react-bootstrap/CardDeck";
 
+// making a slight change
 export default class Home extends Component {
   constructor(props) {
     super(props);
