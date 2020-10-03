@@ -7,6 +7,7 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import classes from "./Home.module.css";
 
 export default class Home extends Component {
@@ -52,8 +53,13 @@ export default class Home extends Component {
           <Col></Col>
           <Col>
             <div className={classes.center}>
-              <Button href="analysis" variant="success" size="lg">
-                Go!
+              <Button variant="success" size="lg">
+                <Link
+                  to="/analysis"
+                  style={{ color: "inherit", "text-decoration": "none" }}
+                >
+                  Go!
+                </Link>
               </Button>
             </div>
           </Col>
