@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Card, CardDeck } from "react-bootstrap";
 import classes from "./About.module.css";
+import Fade from "react-reveal/Fade";
 
 export default class About extends Component {
   render() {
@@ -9,10 +10,14 @@ export default class About extends Component {
         <Container>
           <Row>
             <Col>
-              <h1>
-                <b>About Market Go Brr</b>
-              </h1>
-              <br />
+              <Fade bottom>
+                <h1>
+                  <b>About Market Go Brr</b>
+                </h1>
+                <br />
+              </Fade>
+              <Fade bottom>
+
               <CardDeck>
                 <Card className={classes.AboutCard}>
                   <Card.Body>
@@ -53,7 +58,11 @@ export default class About extends Component {
                   </Card.Body>
                 </Card>
               </CardDeck>
+              </Fade>
+
               <br />
+              <Fade bottom>
+
               <Card className={classes.AboutCard}>
                 <Card.Body>
                   <Card.Title>
@@ -74,6 +83,8 @@ export default class About extends Component {
                   </Card.Text>
                 </Card.Body>
               </Card>
+              </Fade>
+
             </Col>
           </Row>
         </Container>
