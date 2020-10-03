@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/hughbromund/MarketGoBrr/issues"
   },
-  "homepage": "https://github.com/hughbromund/MarketGoBrr#readme"
+  "homepage": "https://github.com/hughbromund/MarketGoBrr#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
 }
