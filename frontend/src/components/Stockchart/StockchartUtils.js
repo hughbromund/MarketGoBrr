@@ -17,18 +17,10 @@ function parseData(parse) {
 const parseDate = timeParse("%Y-%m-%d");
 
 export function getData() {
-  const promiseCompare = fetch(
-    "https://cdn.rawgit.com/rrag/react-stockcharts/master/docs/data/comparison.tsv"
+  const promiseMSFT = fetch(
+    "https://cdn.rawgit.com/rrag/react-stockcharts/master/docs/data/MSFT.tsv"
   )
     .then((response) => response.text())
-    .then((data) =>
-      tsvParse(data, (d) => {
-        d = parseData(parseDate)(d);
-        d.SP500Close = +d.SP500Close;
-        d.AAPLClose = +d.AAPLClose;
-        d.GEClose = +d.GEClose;
-        return d;
-      })
-    );
-  return promiseCompare;
+    .then((data) => tsvParse(data, parseData(parseDate)));
+  return promiseMSFT;
 }

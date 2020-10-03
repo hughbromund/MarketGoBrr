@@ -1,5 +1,10 @@
-backend/node_modules/*
-Market Go Brr-8a03939aab93.json
-sentiment/config.py
-sentiment/config.pyc
 .DS_Store
+
+backend/node_modules/*
+
+sentiment/Market Go Brr-8a03939aab93.json
+sentiment/config.py
+sentiment/.vscode/settings.json
+sentiment/__pycache__
+sentiment/config.pyc
+

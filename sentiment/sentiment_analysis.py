@@ -1,10 +1,12 @@
 """Demonstrates how to make a simple call to the Natural Language API."""
 
-import argparse
-
 from google.cloud import language
 from google.cloud.language import enums
 from google.cloud.language import types
+
+from scipy import stats
+import matplotlib.pyplot as plt
+import numpy as np
 
 import twitter
 
@@ -50,7 +52,7 @@ def analyze(user_handle):
         tweet_list[i]["score"] = score
         tweet_list[i]["magnitude"] = magnitude
 
-        print(tweet_list[i])
+        # print(tweet_list[i])
 
     return tweet_list
 
@@ -67,4 +69,22 @@ if __name__ == "__main__":
 
     # analyze(args.movie_review_filename)
 
-    analyze("realDonaldTrump")
+    tweet_arr = analyze("realDonaldTrump")
+
+    x_arr = []
+    y_arr = []
+    for i in range(len(tweet_arr)):
+        x_arr.append(tweet_arr[i].get("score"))
+        print(tweet_arr[i].get("score"))
+        y_arr.append(i)
+
+    slope, intercept, r_value, p_value, std_err = stats.linregress(
+        x_arr, y_arr)
+
+    print(str(r_value**2))
+
+    plt.plot(x_arr, y_arr, 'o', label='original data')
+    plt.plot(x_arr, intercept + slope *
+             np.asarray(x_arr), 'r', label='fitted line')
+    plt.legend()
+    plt.show()

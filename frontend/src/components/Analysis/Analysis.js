@@ -1,20 +1,28 @@
 import React, { Component } from "react";
 import StockchartInterface from "../Stockchart/StockchartInterface";
 
-import { Link, Element, scroller } from "react-scroll";
-import { Container, Row, Col } from "react-bootstrap";
-import { Timeline } from "react-twitter-widgets";
+import { Link, Element } from "react-scroll";
+import {
+  Container,
+  Row,
+  Col,
+  CardDeck,
+  Card,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
+import { Timeline, Tweet } from "react-twitter-widgets";
+import AnalysisCard from "../AnalysisCard/AnalysisCard";
 
 import classes from "./Analysis.module.css";
 
 export default class Analysis extends Component {
-  scrollTo() {
-    scroller.scrollTo("scroll-to-element", {
-      duration: 800,
-      delay: 0,
-      smooth: "easeInOutQuart",
-    });
-  }
+  getUsername = () => {
+    return this.props.location.pathname.split("/")[2];
+  };
+  getStockTicker = () => {
+    return this.props.location.pathname.split("/")[3];
+  };
   render() {
     return (
       <div>
@@ -22,65 +30,101 @@ export default class Analysis extends Component {
           <Container fluid>
             <Row>
               <Col>
-                <h1>
-                  We have determined that this user's tweets have a 50% effect
-                  on SPY.
-                </h1>
-                <StockchartInterface></StockchartInterface>
+                <Card className={classes.StockCard}>
+                  <Card.Body>
+                    <Card.Title>
+                      We have determined that <b>@{this.getUsername()}'s</b>{" "}
+                      tweets have a 50% effect on <b>{this.getStockTicker()}</b>
+                      .
+                    </Card.Title>
+                    <hr />
+                    <Card.Text>
+                      <StockchartInterface />
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
                 <br />
                 <div className={classes.center}>
-                  <label>More info:</label>
-                </div>
-                <div className={classes.center}>
-                  <Link
-                    activeClass="active"
-                    className="test1"
-                    to="test1"
-                    spy={true}
-                    smooth={true}
-                    duration={1000}
+                  <OverlayTrigger
+                    placement="top"
+                    overlay={<Tooltip id="tooltip">More info.</Tooltip>}
                   >
-                    <i
-                      class="fa fa-arrow-circle-down fa-5x"
-                      aria-hidden="true"
-                    ></i>
-                  </Link>
+                    <div className={classes.tooltip}>
+                      <Link
+                        activeClass="active"
+                        className="test1"
+                        to="test1"
+                        spy={true}
+                        smooth={true}
+                        duration={1000}
+                      >
+                        <i
+                          class="fa fa-arrow-circle-down fa-5x"
+                          aria-hidden="true"
+                        ></i>
+                      </Link>
+                    </div>
+                  </OverlayTrigger>
                 </div>
               </Col>
             </Row>
           </Container>
         </div>
-        <hr />
         <div className={classes.firstContainer}>
           <Element name="test1" className="element">
+            <hr />
+            <br />
             <Container fluid>
               <Row>
                 <Col sm={8}>
-                  <h1>Top Sentiments</h1>
+                  <h2>Top Sentiments:</h2>
                   <Row>
                     <Col>
-                      <h1>33% angry</h1>
+                      <CardDeck>
+                        <AnalysisCard
+                          name="Angry Sentiment"
+                          description="This user has a 33% angry sentiment, which has a high effect of the market."
+                        />
+                        <AnalysisCard
+                          name="Sad Sentiment"
+                          description="This user has a 8% angry sentiment, which has a high effect of the market."
+                        />
+                      </CardDeck>
+                      <br />
+                      <CardDeck>
+                        <AnalysisCard
+                          name="Happy Sentiment"
+                          description="This user has a 50% angry sentiment, which has a high effect of the market."
+                        />
+                        <AnalysisCard
+                          name="Annoyed Sentiment"
+                          description="This user has a 10% angry sentiment, which has a high effect of the market."
+                        />
+                      </CardDeck>
                     </Col>
                   </Row>
-                  <Row>
-                    <Col>
-                      <h1>50% sad</h1>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <h1>1% happy</h1>
-                    </Col>
-                  </Row>
                   <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
+
+                  <h2>Top Tweets:</h2>
 
                   <Row>
                     <Col>
-                      <h1>Top Tweets:</h1>
+                      <Tweet
+                        tweetId="841418541026877441"
+                        options={{ width: "200" }}
+                      />
+                    </Col>
+                    <Col>
+                      <Tweet
+                        tweetId="841418541026877441"
+                        options={{ width: "200" }}
+                      />
+                    </Col>
+                    <Col>
+                      <Tweet
+                        tweetId="841418541026877441"
+                        options={{ width: "200" }}
+                      />
                     </Col>
                   </Row>
                 </Col>

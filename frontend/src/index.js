@@ -28,6 +28,7 @@ ReactDOM.render(
           <Route exact path="/" component={Home} />
         </div>
       </div>
+      <hr />
       <Footer />
     </Router>
   </div>,

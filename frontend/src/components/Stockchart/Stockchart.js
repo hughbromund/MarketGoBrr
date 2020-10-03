@@ -33,10 +33,10 @@ class Stockchart extends React.Component {
         type={type}
         xAccessor={(d) => d.date}
         xScale={scaleTime()}
-        xExtents={[new Date(2011, 0, 1), new Date(2013, 0, 2)]}
-        mouseMoveEvent={true}
-        panEvent={true}
-        zoomEvent={true}
+        // xExtents={[new Date(2011, 0, 1), new Date(2013, 0, 2)]}
+        mouseMoveEvent={false}
+        panEvent={false}
+        zoomEvent={false}
         clamp={true}
       >
         <Chart id={0} yExtents={(d) => d.close}>
