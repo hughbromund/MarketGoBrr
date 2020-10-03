@@ -17,6 +17,11 @@ import Fade from "react-reveal/Fade";
 
 import classes from "./Analysis.module.css";
 
+var BASE = "https://api.marketgobrr.com";
+if (process.env.NODE_ENV === "development") {
+  BASE = "http://localhost:5000";
+}
+
 export default class Analysis extends Component {
   getUsername = () => {
     console.log(this.props.location.pathname.split("/")[2]);
@@ -32,6 +37,7 @@ export default class Analysis extends Component {
       : this.props.location.pathname.split("/")[3];
   };
   render() {
+    console.log(BASE);
     return (
       <div>
         <div className={classes.firstContainer}>
