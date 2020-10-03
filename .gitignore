@@ -2,9 +2,13 @@
 
 backend/node_modules/*
 
+Market Go Brr-8a03939aab93.json
+
 sentiment/Market Go Brr-8a03939aab93.json
 sentiment/config.py
 sentiment/.vscode/settings.json
 sentiment/__pycache__
 sentiment/config.pyc
 
+sentiment/__pycache__/config.cpython-37.pyc
+sentiment/__pycache__/twitter.cpython-37.pyc
