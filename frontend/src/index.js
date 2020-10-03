@@ -18,17 +18,17 @@ if (window.location.protocol !== "https:") {
 
 ReactDOM.render(
   <div>
-    <NavigationBar />
-    <div style={{ minHeight: "100vh" }}>
-      <Router>
+    <Router>
+      <NavigationBar />
+      <div style={{ minHeight: "100vh" }}>
         <div>
           <Route path="/about" component={About} />
           <Route path="/analysis" component={Analysis} />
           <Route exact path="/" component={Home} />
         </div>
-      </Router>
-    </div>
-    <Footer />
+      </div>
+      <Footer />
+    </Router>
   </div>,
   document.getElementById("root")
 );
