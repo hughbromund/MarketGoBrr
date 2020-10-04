@@ -58,7 +58,7 @@ export default class PairingCard extends Component {
             </Col>
             <Col>
               <Card.Title>
-                {(this.props.r_value * 100).toPrecision(5)}%
+                {Math.abs(this.props.r_value * 100).toPrecision(5)}%
               </Card.Title>
             </Col>
             <Col sm={1}>
