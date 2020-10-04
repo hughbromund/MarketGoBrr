@@ -33,14 +33,14 @@ export default class NavigationBar extends Component {
                   About
                 </Link>
               </Nav.Link>
-              <Nav.Link>
+              {/* <Nav.Link>
                 <Link
                   to="/analysis"
                   style={{ color: "inherit", "text-decoration": "none" }}
                 >
                   Analysis
                 </Link>
-              </Nav.Link>
+              </Nav.Link> */}
               <Nav.Link>
                 <Link
                   to="/top"

@@ -157,15 +157,9 @@ export default class Analysis extends Component {
           <Row>
             <Col>
               <h1>Not enough tweets for the given user!</h1>
-              <Link
-                as={Button}
-                to="/"
-                style={{ color: "inherit", "text-decoration": "none" }}
-              >
-                <Button variant="success" size="lg">
-                  Go back and try a different user!
-                </Button>
-              </Link>
+              <Button href="/" variant="success" size="lg">
+                Go back and try a different user!
+              </Button>
             </Col>
           </Row>
         </Container>
