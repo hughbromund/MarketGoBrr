@@ -29,6 +29,7 @@ export default class Analysis extends Component {
       data: "",
       status: 0,
       topEmotionalTweets: [],
+      dataStatus: true,
     };
 
     this.interval = setInterval(() => {
@@ -47,6 +48,10 @@ export default class Analysis extends Component {
       }
     );
     var body = await response.json();
+    if (response.status !== 200) {
+      this.setState({ dataStatus: false });
+      return;
+    }
     this.setState({ data: body });
     console.log(body);
     console.log(Math.abs(this.state.data.r_value).toString());
@@ -153,6 +158,16 @@ export default class Analysis extends Component {
           </Container>
         </div>
       );
+    } else if (this.state.dataStatus === false) {
+      return (
+        <Container>
+          <Row>
+            <Col>
+              <h1>Not enough tweets for the given user!</h1>
+            </Col>
+          </Row>
+        </Container>
+      );
     }
     clearInterval(this.interval);
     return (
@@ -228,15 +243,79 @@ export default class Analysis extends Component {
               <Row>
                 <Col>
                   <Fade bottom delay={1000}>
-                    <h2>Top Tweets</h2>
+                    <h2>Top Influential Tweets</h2>
                   </Fade>
                   <Fade bottom delay={1000}>
                     <p>
                       Based on our machine learning algorithm, sentiment
                       analysis, natural language processing, linear regression,
                       data analysis, and mathematical models, we have determined
-                      that these tweets have been <b>most influential</b> in the
-                      market.
+                      that these tweets have been the{" "}
+                      <b>most influential tweets</b> on {this.getStockTicker()}.
+                    </p>
+                  </Fade>
+                  <Row>
+                    <Col>
+                      <Fade bottom delay={1000}>
+                        <Tweet
+                          tweetId={this.state.data.highest_change_tweets[0].id}
+                        />
+                        <p className={classes.center}>
+                          Absolute change on {this.getStockTicker()}:{" "}
+                          <b>
+                            {Math.round(
+                              this.state.data.highest_change_tweets[0].change *
+                                100
+                            )}
+                            %
+                          </b>
+                        </p>
+                      </Fade>
+                    </Col>
+                    <Col>
+                      <Fade bottom delay={1000}>
+                        <Tweet
+                          tweetId={this.state.data.highest_change_tweets[1].id}
+                        />
+                        <p className={classes.center}>
+                          Absolute change on {this.getStockTicker()}:{" "}
+                          <b>
+                            {Math.round(
+                              this.state.data.highest_change_tweets[1].change *
+                                100
+                            )}
+                            %
+                          </b>
+                        </p>
+                      </Fade>
+                    </Col>
+                    <Col>
+                      <Fade bottom delay={1000}>
+                        <Tweet
+                          tweetId={this.state.data.highest_change_tweets[2].id}
+                        />
+                        <p className={classes.center}>
+                          Absolute change on {this.getStockTicker()}:{" "}
+                          <b>
+                            {Math.round(
+                              this.state.data.highest_change_tweets[2].change *
+                                100
+                            )}
+                            %
+                          </b>
+                        </p>
+                      </Fade>
+                    </Col>
+                  </Row>
+                  <Fade bottom delay={1000}>
+                    <h2>Top Emotional Tweets</h2>
+                  </Fade>
+                  <Fade bottom delay={1000}>
+                    <p>
+                      Based on our machine learning algorithm, sentiment
+                      analysis, natural language processing, linear regression,
+                      data analysis, and mathematical models, we have determined
+                      that these tweets have been <b>most emotional tweets</b>
                     </p>
                   </Fade>
                   <Row>
@@ -286,7 +365,7 @@ export default class Analysis extends Component {
                         screenName: this.getUsername(),
                       }}
                       options={{
-                        height: "800",
+                        height: "1600",
                       }}
                     />
                   </Fade>
