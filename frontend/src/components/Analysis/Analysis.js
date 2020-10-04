@@ -10,6 +10,7 @@ import {
   OverlayTrigger,
   Tooltip,
   ProgressBar,
+  Button,
 } from "react-bootstrap";
 import { Timeline, Tweet } from "react-twitter-widgets";
 import Fade from "react-reveal/Fade";
@@ -48,7 +49,7 @@ export default class Analysis extends Component {
       }
     );
     var body = await response.json();
-    if (response.status !== 200) {
+    if (response.status === 400) {
       this.setState({ dataStatus: false });
       return;
     }
@@ -150,7 +151,26 @@ export default class Analysis extends Component {
   };
 
   render() {
-    if (this.state.data === "") {
+    if (this.state.dataStatus === false) {
+      return (
+        <Container>
+          <Row>
+            <Col>
+              <h1>Not enough tweets for the given user!</h1>
+              <Link
+                as={Button}
+                to=""
+                style={{ color: "inherit", "text-decoration": "none" }}
+              >
+                <Button variant="success" size="lg">
+                  Go back and try a different user!
+                </Button>
+              </Link>
+            </Col>
+          </Row>
+        </Container>
+      );
+    } else if (this.state.data === "") {
       return (
         <div>
           <Container>
@@ -169,7 +189,7 @@ export default class Analysis extends Component {
                         "Tracking market changes over time",
                         "Analyzing sentiments",
                         "Powering up the servers",
-                        "Accruing a taste for Free-Form Jazz",
+                        "Acquiring a taste for Free-Form Jazz",
                         "Petting the squirrel from VandyHacks",
                       ])}
                     />
@@ -181,16 +201,6 @@ export default class Analysis extends Component {
             </Row>
           </Container>
         </div>
-      );
-    } else if (this.state.dataStatus === false) {
-      return (
-        <Container>
-          <Row>
-            <Col>
-              <h1>Not enough tweets for the given user!</h1>
-            </Col>
-          </Row>
-        </Container>
       );
     }
     clearInterval(this.interval);
