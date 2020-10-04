@@ -51,7 +51,7 @@ export default class PairingCard extends Component {
               </Card.Title>
             </Col>
             <Col>
-              <Card.Title>{this.props.stock}</Card.Title>
+              <Card.Title>{this.props.stock.toUpperCase()}</Card.Title>
             </Col>
             <Col>
               <Card.Title>{this.determineCorrelation()}</Card.Title>
