@@ -41,6 +41,14 @@ export default class NavigationBar extends Component {
                   Analysis
                 </Link>
               </Nav.Link>
+              <Nav.Link>
+                <Link
+                  to="/top"
+                  style={{ color: "inherit", "text-decoration": "none" }}
+                >
+                  Top Pairs
+                </Link>
+              </Nav.Link>
             </Nav>
             <a
               target="_blank"

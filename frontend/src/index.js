@@ -10,6 +10,7 @@ import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Analysis from "./components/Analysis/Analysis";
 import Footer from "./components/Footer/Footer";
+import TopPairings from "./components/TopPairings/TopPairings";
 
 if (window.location.protocol !== "https:") {
   window.location.replace(
@@ -26,6 +27,7 @@ ReactDOM.render(
         <div>
           <Route path="/about" component={About} />
           <Route path="/analysis" component={Analysis} />
+          <Route path="/top" component={TopPairings} />
           <Route exact path="/" component={Home} />
         </div>
       </div>
