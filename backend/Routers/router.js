@@ -7,6 +7,12 @@ const analysisController = require(path.resolve(
     "../Controllers/AnalysisController"
 ))
 
+const databaseQueryController = require(path.resolve(
+    __dirname,
+    "../Controllers/DatabaseQueryController"
+))
+
 router.get("/api/:user/:stock", analysisController.getUserAnalysis);
+router.get("/api/topRVal", databaseQueryController.getRVal);
 
 module.exports = router;

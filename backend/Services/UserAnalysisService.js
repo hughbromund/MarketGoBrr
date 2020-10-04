@@ -1,6 +1,7 @@
 const got = require("got")
 const path = require("path");
 const config = require(path.resolve(__dirname, "../config.json"));
+const sql = require(path.resolve(__dirname, "../Database/Database.js"));
 
 
 exports.userAnalysisStub = async function (req) {
@@ -24,8 +25,13 @@ exports.userAnalysis = async function (req) {
         responseType: 'json',
         resolveBodyOnly: true
     })
-    //console.log(result)
+    console.log(result)
     result.status = 200
+
+    sql.query("INSERT IGNORE INTO top_pairs (twit_acc, stock_symbol, r_val) VALUES (\"" + req.params.user + "\", \""+ req.params.stock + "\", " + result.r_value + ")", (err, result) => {
+        if (err) throw err;
+        console.log("1 Row inserted");
+    });
 
     return result;
     
