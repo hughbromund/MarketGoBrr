@@ -25,8 +25,15 @@ exports.userAnalysis = async function (req) {
         responseType: 'json',
         resolveBodyOnly: true
     })
-    console.log(result)
-    result.status = 200
+    console.log(result.r_value)
+    if (!result.status) {
+        result.status = 200
+    }
+
+    if (result.status == 400) {
+        return result
+    }
+    
 
     sql.query("INSERT IGNORE INTO top_pairs (twit_acc, stock_symbol, r_val) VALUES (\"" + req.params.user + "\", \""+ req.params.stock + "\", " + result.r_value + ")", (err, result) => {
         if (err) throw err;

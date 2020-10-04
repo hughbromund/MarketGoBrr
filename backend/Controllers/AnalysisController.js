@@ -6,7 +6,6 @@ var UserAnalysisService = require(path.resolve(
 ))
 
 exports.getUserAnalysis = async function (req, res, next) {
-    let status = 400;
     let result = await UserAnalysisService.userAnalysis(req);
     res.status(result.status).json(result);
 }
