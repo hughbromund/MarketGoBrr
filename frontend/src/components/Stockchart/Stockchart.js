@@ -22,11 +22,12 @@ const canvasGradient = createVerticalLinearGradient([
 class Stockchart extends React.Component {
   render() {
     const { data, type, width, ratio } = this.props;
+
     return (
       <ChartCanvas
         ratio={ratio}
         width={width}
-        height={500}
+        height={400}
         margin={{ left: 50, right: 50, top: 10, bottom: 30 }}
         seriesName="MSFT"
         data={data}
@@ -34,7 +35,7 @@ class Stockchart extends React.Component {
         xAccessor={(d) => d.date}
         xScale={scaleTime()}
         // xExtents={[new Date(2011, 0, 1), new Date(2013, 0, 2)]}
-        mouseMoveEvent={false}
+        mouseMoveEvent={true}
         panEvent={false}
         zoomEvent={false}
         clamp={true}

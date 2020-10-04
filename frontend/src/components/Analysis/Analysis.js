@@ -73,13 +73,13 @@ export default class Analysis extends Component {
     var percent = Math.abs(this.state.data.r_value * 100);
     if (percent >= 30) {
       out += "a strong ";
-      out += this.determinePositiveOrNegative(percent);
+      out += this.determinePositiveOrNegative(this.state.data.r_value * 100);
     } else if (percent >= 20) {
       out += "a medium ";
-      out += this.determinePositiveOrNegative(percent);
+      out += this.determinePositiveOrNegative(this.state.data.r_value * 100);
     } else if (percent >= 10) {
       out += "a low ";
-      out += this.determinePositiveOrNegative(percent);
+      out += this.determinePositiveOrNegative(this.state.data.r_value * 100);
     } else {
       out += "no";
     }
@@ -165,15 +165,27 @@ export default class Analysis extends Component {
                   <Card className={classes.StockCard}>
                     <Card.Body>
                       <Card.Title>
-                        We have determined that <b>@{this.getUsername()}'s</b>{" "}
-                        tweets have{" "}
-                        <b>{this.determineCorrelation()} correlation</b> with{" "}
-                        <b>{this.getStockTicker()}</b>.
+                        <h2>
+                          <b>@{this.getUsername()}'s</b> tweets have{" "}
+                          <b>
+                            {this.determineCorrelation()} (
+                            {Math.round(
+                              Math.abs(this.state.data.r_value * 100)
+                            )}
+                            %) correlation{" "}
+                          </b>{" "}
+                          with <b>{this.getStockTicker()}</b>.
+                        </h2>
                       </Card.Title>
                       <hr />
                       <Card.Text>
+                        <h3>
+                          Graph of <b>{this.getStockTicker()}</b> over the last
+                          month.
+                        </h3>
                         <StockchartInterface
                           rawData={this.state.data.stock_data}
+                          tooltips={this.state.data.highest_change_tweets}
                         />
                       </Card.Text>
                     </Card.Body>

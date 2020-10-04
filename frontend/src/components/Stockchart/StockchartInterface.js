@@ -7,6 +7,7 @@ export default class ChartComponent extends React.Component {
     super(props);
     this.state = {
       rawData: this.props.rawData,
+      tooltips: this.props.tooltips,
     };
   }
   componentDidMount() {
@@ -18,6 +19,13 @@ export default class ChartComponent extends React.Component {
     if (this.state.data == null) {
       return <div>Loading...</div>;
     }
-    return <Stockchart type="svg" data={this.state.data} />;
+    console.log(this.state.tooltips);
+    return (
+      <Stockchart
+        type="svg"
+        data={this.state.data}
+        tooltips={this.state.tooltips}
+      />
+    );
   }
 }
