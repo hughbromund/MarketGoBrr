@@ -1,5 +1,7 @@
 finnhub-python
 tweepy
 scipy
-matplotlib.pyplot
+matplotlib
 numpy
+google-cloud-datastore
+google-cloud-language

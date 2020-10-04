@@ -16,3 +16,9 @@ code {
   color: inherit;
   text-decoration: "none";
 }
+hr {
+  background-color: #1155cc;
+  border-radius: 7px;
+  border: none;
+  height: 3px;
+}

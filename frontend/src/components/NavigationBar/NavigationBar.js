@@ -41,7 +41,22 @@ export default class NavigationBar extends Component {
                   Analysis
                 </Link>
               </Nav.Link>
+              <Nav.Link>
+                <Link
+                  to="/top"
+                  style={{ color: "inherit", "text-decoration": "none" }}
+                >
+                  Top Pairs
+                </Link>
+              </Nav.Link>
             </Nav>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/hughbromund/MarketGoBrr"
+            >
+              <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+            </a>
           </Navbar.Collapse>
         </Navbar>
       </div>

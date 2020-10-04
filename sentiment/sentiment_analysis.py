@@ -31,6 +31,9 @@ def get_tweet_list(user_handle):
 
     tweet_list = twitter.get_tweets(handle=user_handle)
 
+    if tweet_list[0] == "34":
+        return tweet_list
+
     for i in range(len(tweet_list)):
 
         content = tweet_list[i].get("text")

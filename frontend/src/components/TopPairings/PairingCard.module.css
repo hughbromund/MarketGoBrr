@@ -1,0 +1,17 @@
+.PairingCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.25s ease;
+  border-radius: 7px;
+  text-align: center;
+}
+.PairingCard:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+  transform: translate(0px, -7px);
+}
+
+.HeaderCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+  transform: translate(0px, -7px);
+  border-radius: 7px;
+  text-align: center;
+}
