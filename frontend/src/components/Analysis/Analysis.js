@@ -10,10 +10,12 @@ import {
   Card,
   OverlayTrigger,
   Tooltip,
+  ProgressBar,
 } from "react-bootstrap";
 import { Timeline, Tweet } from "react-twitter-widgets";
 import AnalysisCard from "../AnalysisCard/AnalysisCard";
 import Fade from "react-reveal/Fade";
+import TextLoop from "react-text-loop";
 
 import classes from "./Analysis.module.css";
 
@@ -27,7 +29,15 @@ export default class Analysis extends Component {
     super(props);
     this.state = {
       data: "",
+      status: 0,
     };
+
+    this.interval = setInterval(() => {
+      const change = 0.9;
+      if (this.state.status + change <= 100) {
+        this.setState({ status: this.state.status + change });
+      }
+    }, 100);
   }
   async getData() {
     console.log("here");
@@ -59,13 +69,13 @@ export default class Analysis extends Component {
     var percent = Math.abs(this.state.data.r_value * 100);
     if (percent >= 30) {
       out += "a strong ";
-      out += this.determinePositiveOrNegative();
+      out += this.determinePositiveOrNegative(percent);
     } else if (percent >= 20) {
       out += "a medium ";
-      out += this.determinePositiveOrNegative();
-    } else if (out >= 10) {
+      out += this.determinePositiveOrNegative(percent);
+    } else if (percent >= 10) {
       out += "a low ";
-      out += this.determinePositiveOrNegative();
+      out += this.determinePositiveOrNegative(percent);
     } else {
       out += "no";
     }
@@ -85,8 +95,32 @@ export default class Analysis extends Component {
   };
   render() {
     if (this.state.data === "") {
-      return "Loading...";
+      return (
+        <div>
+          <Container>
+            <Row>
+              <Col>
+                <div className={classes.center}>
+                  <h2>
+                    <TextLoop
+                      children={[
+                        "Analyzing Twitter data",
+                        "Running through Google Cloud",
+                        "Analyzing sentiments",
+                        "Tracking market changes over time",
+                      ]}
+                    />
+                  </h2>
+                </div>
+                <br />
+                <ProgressBar now={this.state.status} />
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      );
     }
+    clearInterval(this.interval);
     return (
       <div>
         <div className={classes.firstContainer}>
