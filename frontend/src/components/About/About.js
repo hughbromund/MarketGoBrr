@@ -72,9 +72,11 @@ export default class About extends Component {
                         <ul>
                           <li>ReactJS</li>
                           <li>NodeJS</li>
-                          <li>Google Cloud NLP</li>
+                          <li>Google Cloud NLP - Sentiment Analysis</li>
                           <li>Google Cloud App Engine</li>
                           <li>Google Cloud Functions</li>
+                          <li>Google Cloud SQL</li>
+                          <li>Python</li>
                           <li>Twitter API</li>
                           <li>Finnhub API</li>
                           <li>ExpressJS</li>

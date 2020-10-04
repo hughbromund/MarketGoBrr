@@ -92,8 +92,8 @@ export default class Home extends Component {
                   onChange={(e) => {
                     this.setState({ stockTicker: e.target.value });
                   }}
-                  placeholder="Stock Ticker"
-                  aria-label="Stock Ticker"
+                  placeholder="Stock Symbol"
+                  aria-label="Stock Symbol"
                 />
               </InputGroup>
             </Fade>
