@@ -13,3 +13,4 @@ sentiment/config.pyc
 sentiment/__pycache__/config.cpython-37.pyc
 sentiment/__pycache__/twitter.cpython-37.pyc
 sentiment/__pycache__/config.cpython-37.pyc
+backend/secret.json
