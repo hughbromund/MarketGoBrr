@@ -24,7 +24,12 @@ export default class Home extends Component {
     this.state = {
       twitterUsername: "",
       stockTicker: "",
+      brr: "brr",
     };
+    // this.interval = setInterval(
+    //   () => this.setState({ brr: this.state.brr + "r" }),
+    //   250
+    // );
   }
 
   setTwitterUsername = (newUsername) => {
