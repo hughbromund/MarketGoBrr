@@ -6,14 +6,12 @@ import {
   Container,
   Row,
   Col,
-  CardDeck,
   Card,
   OverlayTrigger,
   Tooltip,
   ProgressBar,
 } from "react-bootstrap";
 import { Timeline, Tweet } from "react-twitter-widgets";
-import AnalysisCard from "../AnalysisCard/AnalysisCard";
 import Fade from "react-reveal/Fade";
 import TextLoop from "react-text-loop";
 
@@ -136,10 +134,14 @@ export default class Analysis extends Component {
                   <h2>
                     <TextLoop
                       children={[
-                        "Analyzing Twitter data",
+                        "Using linear regression",
+                        "Utilizing mathematical models",
                         "Running through Google Cloud",
-                        "Analyzing sentiments",
+                        "Performing data analysis",
+                        "Running machine learning algorithms",
+                        "Analyzing Twitter data",
                         "Tracking market changes over time",
+                        "Analyzing sentiments",
                       ]}
                     />
                   </h2>
@@ -212,42 +214,18 @@ export default class Analysis extends Component {
             <br />
             <Container fluid>
               <Row>
-                <Col sm={8}>
-                  <Fade bottom>
-                    <h2>Top Sentiments</h2>
-                  </Fade>
-                  <Row>
-                    <Col>
-                      <Fade bottom>
-                        <CardDeck>
-                          <AnalysisCard
-                            name="Angry Sentiment"
-                            description="This user has a 33% angry sentiment, which has a high effect of the market."
-                          />
-                          <AnalysisCard
-                            name="Sad Sentiment"
-                            description="This user has a 8% angry sentiment, which has a high effect of the market."
-                          />
-                        </CardDeck>
-                      </Fade>
-                      <br />
-                      <Fade bottom>
-                        <CardDeck>
-                          <AnalysisCard
-                            name="Happy Sentiment"
-                            description="This user has a 50% angry sentiment, which has a high effect of the market."
-                          />
-                          <AnalysisCard
-                            name="Annoyed Sentiment"
-                            description="This user has a 10% angry sentiment, which has a high effect of the market."
-                          />
-                        </CardDeck>
-                      </Fade>
-                    </Col>
-                  </Row>
-                  <br />
+                <Col>
                   <Fade bottom delay={1000}>
                     <h2>Top Tweets</h2>
+                  </Fade>
+                  <Fade bottom delay={1000}>
+                    <p>
+                      Based on our machine learning algorithm, sentiment
+                      analysis, natural language processing, linear regression,
+                      data analysis, and mathematical models, we have determined
+                      that these tweets have been <b>most influential</b> in the
+                      market.
+                    </p>
                   </Fade>
                   <Row>
                     <Col>
