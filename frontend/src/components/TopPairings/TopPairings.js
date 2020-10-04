@@ -19,7 +19,11 @@ export default class TopPairings extends Component {
             </h1>
           </Fade>
           <Fade bottom>
-            <p>See the top correlations between Twitter Users and Stocks</p>
+            <p>
+              See the top correlations between Twitter Users and Stocks. Think
+              you know a pairing that's better? Run your Twitter User and Stock
+              through the system and it'll show up here if you're correct!
+            </p>
             <br />
           </Fade>
           <Fade bottom>

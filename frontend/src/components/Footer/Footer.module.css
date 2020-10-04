@@ -1,6 +1,17 @@
 .Footer {
-  height: 10vh;
+  height: 20vh;
+  background: rgb(28, 69, 135);
+  background: linear-gradient(
+    270deg,
+    rgba(28, 69, 135, 1) 0%,
+    rgba(17, 85, 204, 1) 100%
+  );
+  color: white;
+  padding: 10px;
+  padding-top: 5vh;
+  margin-top: 10vh;
 }
 .inner {
   text-align: center;
+  margin: 0 auto;
 }
