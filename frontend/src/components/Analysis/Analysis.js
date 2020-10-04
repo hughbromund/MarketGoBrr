@@ -123,6 +123,27 @@ export default class Analysis extends Component {
     }
     return max;
   };
+
+  shuffle = (array) => {
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  };
+
   render() {
     if (this.state.data === "") {
       return (
@@ -133,7 +154,7 @@ export default class Analysis extends Component {
                 <div className={classes.center}>
                   <h2>
                     <TextLoop
-                      children={[
+                      children={this.shuffle([
                         "Using linear regression",
                         "Utilizing mathematical models",
                         "Running through Google Cloud",
@@ -142,7 +163,10 @@ export default class Analysis extends Component {
                         "Analyzing Twitter data",
                         "Tracking market changes over time",
                         "Analyzing sentiments",
-                      ]}
+                        "Powering up the servers",
+                        "Accruing a taste for Free-Form Jazz",
+                        "Petting the squirrel from VandyHacks",
+                      ])}
                     />
                   </h2>
                 </div>
@@ -174,7 +198,7 @@ export default class Analysis extends Component {
                             )}
                             %) correlation{" "}
                           </b>{" "}
-                          with <b>{this.getStockTicker()}</b>.
+                          with <b>{this.getStockTicker()}</b>
                         </h2>
                       </Card.Title>
                       <hr />
