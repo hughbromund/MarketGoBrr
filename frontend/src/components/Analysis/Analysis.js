@@ -30,6 +30,7 @@ export default class Analysis extends Component {
     this.state = {
       data: "",
       status: 0,
+      topEmotionalTweets: [],
     };
 
     this.interval = setInterval(() => {
@@ -51,9 +52,14 @@ export default class Analysis extends Component {
     this.setState({ data: body });
     console.log(body);
     console.log(Math.abs(this.state.data.r_value).toString());
+    this.setState({ topEmotionalTweets: this.getTopEmotionalTweets() });
+    console.log(this.state.topEmotionalTweets);
+    console.log(
+      this.state.data.tweet_list[this.state.topEmotionalTweets[0]].id
+    );
   }
-  componentDidMount() {
-    this.getData();
+  async componentDidMount() {
+    await this.getData();
   }
 
   determinePositiveOrNegative = (num) => {
@@ -92,6 +98,32 @@ export default class Analysis extends Component {
       this.props.location.pathname.split("/")[3] === undefined
       ? "AAPL"
       : this.props.location.pathname.split("/")[3];
+  };
+  getTopEmotionalTweets = () => {
+    var max = [0, 0, 0];
+    var i = 0;
+    for (i = 0; i < this.state.data.tweet_list.length; i++) {
+      if (this.state.data.tweet_list[i].magnitude >= max[0]) {
+        max[0] = i;
+      }
+    }
+    for (i = 0; i < this.state.data.tweet_list.length; i++) {
+      if (i === max[0]) {
+        continue;
+      }
+      if (this.state.data.tweet_list[i].magnitude >= max[1]) {
+        max[1] = i;
+      }
+    }
+    for (i = 0; i < this.state.data.tweet_list.length; i++) {
+      if (i === max[0] || i === max[1]) {
+        continue;
+      }
+      if (this.state.data.tweet_list[i].magnitude >= max[2]) {
+        max[2] = i;
+      }
+    }
+    return max;
   };
   render() {
     if (this.state.data === "") {
@@ -217,29 +249,37 @@ export default class Analysis extends Component {
                   <Fade bottom delay={1000}>
                     <h2>Top Tweets</h2>
                   </Fade>
-
                   <Row>
                     <Col>
                       <Fade bottom delay={1000}>
                         <Tweet
-                          tweetId="841418541026877441"
-                          options={{ width: "200" }}
+                          tweetId={
+                            this.state.data.tweet_list[
+                              this.getTopEmotionalTweets()[0]
+                            ].id
+                          }
                         />
                       </Fade>
                     </Col>
                     <Col>
                       <Fade bottom delay={1000}>
                         <Tweet
-                          tweetId="841418541026877441"
-                          options={{ width: "200" }}
+                          tweetId={
+                            this.state.data.tweet_list[
+                              this.getTopEmotionalTweets()[1]
+                            ].id
+                          }
                         />
                       </Fade>
                     </Col>
                     <Col>
                       <Fade bottom delay={1000}>
                         <Tweet
-                          tweetId="841418541026877441"
-                          options={{ width: "200" }}
+                          tweetId={
+                            this.state.data.tweet_list[
+                              this.getTopEmotionalTweets()[2]
+                            ].id
+                          }
                         />
                       </Fade>
                     </Col>
