@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
+import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
@@ -31,7 +31,6 @@ ReactDOM.render(
           <Route exact path="/" component={Home} />
         </div>
       </div>
-      <hr />
       <Footer />
     </Router>
   </div>,
