@@ -122,10 +122,12 @@ def get_sentiment_data(twitter_handle, stock_ticker):
     # Information to return: stock data, tweet data, R value,
     final_dict = {}
 
+    # print(stock_vals.get("max_change_list"))
+
     final_dict["stock_data"] = stock_vals.get("stock_data")
     final_dict["tweet_list"] = tweet_list
     final_dict["aggregate_data"] = aggregate_list
-    final_dict["highest_change_tweets"]: stock_vals.get("max_change_list")
+    final_dict["highest_change_tweets"] = stock_vals.get("max_change_list")
     final_dict["r_value"] = r
 
     # print(final_dict)

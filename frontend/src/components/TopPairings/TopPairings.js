@@ -8,8 +8,52 @@ import Row from "react-bootstrap/Row";
 
 import classes from "./PairingCard.module.css";
 
+var BASE = "https://api.marketgobrr.com";
+if (process.env.NODE_ENV === "development") {
+  BASE = "http://localhost:5000";
+}
+
+// GET /api/topRVal
 export default class TopPairings extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      topVals: "",
+    };
+  }
+
+  componentDidMount = async () => {
+    var response = await fetch(BASE + "/api/topRVal", {
+      method: "GET",
+    });
+    var body = await response.json();
+    // console.log(body);
+    this.setState({ topVals: body });
+  };
+
   render() {
+    var output = [];
+    if (this.state.topVals !== "" && this.state.topVals !== undefined) {
+      for (var i = 0; i < this.state.topVals.length; i++) {
+        // console.log(this.state.topVals[i]);
+        output.push(
+          <Fade
+            key={
+              this.state.topVals[i].twit_acc + "-" + this.state.topVals[i].r_val
+            }
+            bottom
+          >
+            <PairingCard
+              username={this.state.topVals[i].twit_acc}
+              stock={this.state.topVals[i].stock_symbol}
+              r_value={this.state.topVals[i].r_val}
+            />
+          </Fade>
+        );
+      }
+    }
+
     return (
       <div>
         <Container>
@@ -59,24 +103,7 @@ export default class TopPairings extends Component {
               </Card.Body>
             </Card>
           </Fade>
-          <Fade bottom>
-            <PairingCard username="HughBromund" stock="SPY" r_value={0.1} />
-          </Fade>
-          <Fade bottom>
-            <PairingCard username="HughBromund" stock="SPY" r_value={0.1} />
-          </Fade>
-          <Fade bottom>
-            <PairingCard username="HughBromund" stock="SPY" r_value={0.1} />
-          </Fade>
-          <Fade bottom>
-            <PairingCard username="HughBromund" stock="SPY" r_value={0.1} />
-          </Fade>
-          <Fade bottom>
-            <PairingCard username="HughBromund" stock="SPY" r_value={0.1} />
-          </Fade>
-          <Fade bottom>
-            <PairingCard username="HughBromund" stock="SPY" r_value={0.1} />
-          </Fade>
+          {output}
         </Container>
       </div>
     );

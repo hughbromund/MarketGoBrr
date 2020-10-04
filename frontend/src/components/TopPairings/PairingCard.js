@@ -18,15 +18,16 @@ export default class PairingCard extends Component {
   determineCorrelation = () => {
     var out = "";
     var percent = Math.abs(this.props.r_value * 100);
+    var otherPercent = this.props.r_value * 100;
     if (percent >= 30) {
       out += "Strong ";
-      out += this.determinePositiveOrNegative(percent);
+      out += this.determinePositiveOrNegative(otherPercent);
     } else if (percent >= 20) {
       out += "Medium ";
-      out += this.determinePositiveOrNegative(percent);
+      out += this.determinePositiveOrNegative(otherPercent);
     } else if (percent >= 10) {
       out += "Low ";
-      out += this.determinePositiveOrNegative(percent);
+      out += this.determinePositiveOrNegative(otherPercent);
     } else {
       out += "No";
     }
@@ -50,13 +51,15 @@ export default class PairingCard extends Component {
               </Card.Title>
             </Col>
             <Col>
-              <Card.Title>{this.props.stock}</Card.Title>
+              <Card.Title>{this.props.stock.toUpperCase()}</Card.Title>
             </Col>
             <Col>
               <Card.Title>{this.determineCorrelation()}</Card.Title>
             </Col>
             <Col>
-              <Card.Title>{this.props.r_value * 100}%</Card.Title>
+              <Card.Title>
+                {Math.abs(this.props.r_value * 100).toPrecision(5)}%
+              </Card.Title>
             </Col>
             <Col sm={1}>
               <Link
