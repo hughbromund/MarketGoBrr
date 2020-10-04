@@ -86,16 +86,10 @@ def get_sentiment_data(twitter_handle, stock_ticker):
     # tweet_score_list.append(tweet.get("score"))
 
     stock_vals = stock.get_stock_data_and_time_list(
-        stock_symbol=stock_ticker, time_list=tweet_time_list)
+        stock_symbol=stock_ticker, time_list=tweet_time_list, all_tweets_list=tweet_list)
 
     highest_change_tweets = []
     max_change_list = stock_vals.get("max_change_list")
-
-    # Get tweets that match the given times
-    for i in range(len(max_change_list)):
-        highest_change_tweets.append(tweet_list[min(range(
-            len(tweet_list)), key=lambda j: abs(int(tweet_list[j].get("date").timestamp())-max_change_list[i][0]))])
-        highest_change_tweets[i]["change"] = max_change_list[i][1]
 
     if len(stock_vals.get("stock_data")) == 0:
         return {"status": 400, "message": "Invalid stock ticker"}
@@ -115,7 +109,6 @@ def get_sentiment_data(twitter_handle, stock_ticker):
                 "change": data_arr[i][0],
                 "id": mag_id_list[i],
                 "timestamp": mag_date_list[i],
-                "highest_change_tweets": highest_change_tweets
             })
 
     # print(tweet_time_list)
@@ -132,6 +125,7 @@ def get_sentiment_data(twitter_handle, stock_ticker):
     final_dict["stock_data"] = stock_vals.get("stock_data")
     final_dict["tweet_list"] = tweet_list
     final_dict["aggregate_data"] = aggregate_list
+    final_dict["highest_change_tweets"]: stock_vals.get("max_change_list")
     final_dict["r_value"] = r
 
     # print(final_dict)
@@ -163,4 +157,4 @@ def post_analysis(request):
 
 if __name__ == "__main__":
     # get_sentiment_data("realDonaldTrump", "aapl")
-    get_sentiment_data("BarackObama", "spy")
+    get_sentiment_data("realDonaldTrump", "spy")

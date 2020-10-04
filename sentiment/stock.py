@@ -58,7 +58,7 @@ def stock_change(stock_data, time):
     return [percent_change, yes_or_no]
 
 
-def get_stock_data_and_time_list(stock_symbol, time_list):
+def get_stock_data_and_time_list(stock_symbol, time_list, all_tweets_list):
 
     dt = datetime.now()
     dt_month = dt.replace(month=dt.month - 1)
@@ -76,26 +76,31 @@ def get_stock_data_and_time_list(stock_symbol, time_list):
     # print(change_list)
 
     # Get 5 times with highest % change (after minimum stock time)
-    min_time_ind = closest_time_index(stock["t"], min(time_list))
-
     max_change_list = []
-
-    for i in range(len(stock["t"]) - min_time_ind - 1):
+    for i in range(len(all_tweets_list)):
         if len(max_change_list) < 5:
-            max_change_list.append(
-                [stock["t"][i + min_time_ind], stock_change(stock, stock["t"][i + min_time_ind])[0]])
+            curr_dict = all_tweets_list[i]
+            curr_dict["change"] = stock_change(stock, int(
+                all_tweets_list[i].get("date").timestamp()))[0]
+            max_change_list.append(all_tweets_list[i])
         else:
+            change_arr = stock_change(stock, int(
+                all_tweets_list[i].get("date").timestamp()))
+            if change_arr[1] == "no":
+                continue
+            curr_change = change_arr[0]
             min_change_ind = 0
-            curr_change = stock_change(stock, stock["t"][i + min_time_ind])[0]
-            # Find minimum in max and replace if necessary
             for j in range(len(max_change_list)):
-                if max_change_list[j] < max_change_list[min_change_ind]:
+                if max_change_list[j].get("change") < max_change_list[min_change_ind].get("change"):
                     min_change_ind = j
-            if max_change_list[min_change_ind][1] < curr_change:
-                max_change_list[min_change_ind] = [
-                    stock["t"][i + min_time_ind], curr_change]
 
-    # print(max_change_list)
+            if curr_change > max_change_list[min_change_ind].get("change"):
+                max_change_list[min_change_ind] = all_tweets_list[i]
+                max_change_list[min_change_ind]["change"] = curr_change
+
+    for i in range(len(max_change_list)):
+        max_change_list[i]["date"] = int(
+            max_change_list[i]["date"].timestamp())
 
     ret_dict = {
         "stock_data": stock,
