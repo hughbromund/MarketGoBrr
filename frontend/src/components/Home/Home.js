@@ -16,6 +16,7 @@ import Collapse from "react-bootstrap/Collapse";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import Fade from "react-reveal/Fade";
+import Alert from "react-bootstrap/Alert";
 
 // making a slight change
 export default class Home extends Component {
@@ -45,6 +46,31 @@ export default class Home extends Component {
       <Container>
         <Row>
           <Col className={classes.center}>
+            <Fade top>
+              <Alert variant="warning">
+                <Alert.Heading>
+                  <b>MarketGoBrr is no longer functional</b>
+                </Alert.Heading>
+                <p>
+                  Due to the cost required in maintaining our backend servers,
+                  MarketGoBrr no longer operates. The frontend will remain
+                  hosted to show off the design, but all functionality is now
+                  removed.
+                </p>
+                <p>
+                  If you'd like to see how the site functioned when it was
+                  online please check out our{" "}
+                  <Alert.Link href="https://devpost.com/software/marketgobrr">
+                    Devpost
+                  </Alert.Link>{" "}
+                  or our{" "}
+                  <Alert.Link href="https://youtu.be/2Ap9SeHrbk0">
+                    Video Demo
+                  </Alert.Link>
+                  .
+                </p>
+              </Alert>
+            </Fade>
             <Fade top>
               <Image
                 alt=""

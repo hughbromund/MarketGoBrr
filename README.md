@@ -18,6 +18,10 @@ Our web app does the majority of its processing in the cloud using python to cal
 
 Our frontend and backend server are hosted using Google App Engine. More specifically, our frontend is written in React.js and is connected to our Google Cloud services through an Express.js REST API. We use Google Cloud Functions for serverless Twitter and stock data processing. In addition, we keep a scoreboard of the highest correlations between Twitter users and specific stocks, which is powered by Google Cloud SQL. Our application uses Google Cloud’s NLP services to perform sentiment analysis on Tweets sent out by a specified user.
 
+## Challenges
+
+The biggest challenges we faced were related to the new technologies that we tried. We wanted to try and use many different cloud services all at once and brining them all together was very challenging. Our backend Express server had to communicate to multiple different Google Cloud services and coordinating all the communication was very challenging.
+
 ## Developers
 
 [Hugh Bromund](https://hughbromund.com)
