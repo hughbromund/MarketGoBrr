@@ -18,7 +18,7 @@ import TextLoop from "react-text-loop";
 
 import classes from "./Analysis.module.css";
 
-var BASE = "https://api.marketgobrr.com";
+var BASE = "https://api.marketgobrr.shmem.io";
 if (process.env.NODE_ENV === "development") {
   BASE = "http://localhost:5000";
 }
